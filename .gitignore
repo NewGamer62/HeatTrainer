@@ -1,0 +1,37 @@
+# Node.js / NPM
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Build outputs
+dist/
+build/
+.expo/
+web-build/
+
+# Environment Variables
+.env
+.env.*
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Prisma SQLite
+backend/prisma/*.db
+backend/prisma/*.db-journal
+
+# Temporary / Scratch files
+scratch/
+test-workout.js
+
+# IDEs and Editors
+.idea/
+.vscode/
+*.swp

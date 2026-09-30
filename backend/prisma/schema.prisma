@@ -1,0 +1,64 @@
+// Auteur : Noa Gaillard
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             String           @id @default(uuid())
+  email          String           @unique
+  password       String
+  name           String
+  createdAt      DateTime         @default(now())
+  workoutSessions WorkoutSession[]
+}
+
+model WorkoutSession {
+  id        String            @id @default(uuid())
+  date      DateTime          @default(now())
+  userId    String
+  user      User              @relation(fields: [userId], references: [id])
+  exercises WorkoutExercise[]
+  createdAt DateTime          @default(now())
+}
+
+model Exercise {
+  id              String            @id @default(uuid())
+  name            String            @unique
+  type            String
+  workoutSessions WorkoutExercise[]
+  muscles         ExerciseMuscle[]
+}
+
+model WorkoutExercise {
+  id               String         @id @default(uuid())
+  workoutSessionId String
+  exerciseId       String
+  sets             Int
+  reps             Int
+  weight           Float
+  workoutSession   WorkoutSession @relation(fields: [workoutSessionId], references: [id])
+  exercise         Exercise       @relation(fields: [exerciseId], references: [id])
+}
+
+model Muscle {
+  id        String           @id @default(uuid())
+  name      String           @unique
+  exercises ExerciseMuscle[]
+}
+
+model ExerciseMuscle {
+  id                    String   @id @default(uuid())
+  exerciseId            String
+  muscleId              String
+  activationCoefficient Float
+  exercise              Exercise @relation(fields: [exerciseId], references: [id])
+  muscle                Muscle   @relation(fields: [muscleId], references: [id])
+
+  @@unique([exerciseId, muscleId])
+}
