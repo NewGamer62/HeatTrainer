@@ -4,6 +4,12 @@ HeatTrainer is a premium, full-stack fitness tracking application built with **R
 
 ## 🚀 Features
 
+<p align="center">
+  <img src="./docs/heatmap.png" width="250" alt="Heatmap Screenshot" />
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="./docs/workout.png" width="250" alt="Workout Builder Screenshot" />
+</p>
+
 - **Gamification & Achievements**: Unlock achievements like "Premier sang" (first workout), "Machine" (10 workouts), and "Titan" (10,000kg lifted). Notifications are localized based on your device language.
 - **Dynamic Body Heatmap**: A visual 2D SVG heatmap of the human body (Front & Back) that updates based on the volume of exercises performed in the last 72 hours, using muscle activation coefficients.
 - **Workout Builder**: Create and edit your workout sessions dynamically with an offline-first draft mode (`AsyncStorage`).
